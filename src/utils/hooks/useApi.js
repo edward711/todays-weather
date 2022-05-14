@@ -11,6 +11,7 @@ function useApi(apiFunc) {
     try {
       const { data } = await apiFunc(...args);
       setData(data);
+      setError("");
     } catch (err) {
       setError(err.message || "Unexpected Error!");
     } finally {

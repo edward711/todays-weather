@@ -1,7 +1,12 @@
 import TodayWeatherDetailItem from "./TodayWeatherDetailItem";
 import { meterToKiloMeter } from "../../utils/helper";
+import EmptyData from './EmptyData';
 
 function TodayWeatherDetail({ data }) {
+  if(!data) {
+    return <EmptyData />
+  }
+
   return (
     <div>
       <header className="p-5">

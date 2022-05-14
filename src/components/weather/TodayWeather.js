@@ -1,13 +1,19 @@
 import dayjs from "dayjs";
 import { getWeatherIconUrl } from "../../utils/helper";
+import EmptyData from './EmptyData';
 
 function TodayWeather({ data }) {
+
+  if(!data) {
+    return <EmptyData />
+  }
+
   return (
     <div>
-      <header className="px-5 py-2 bg-[#000]/80 rounded-t-md">
+      <header className="px-5 py-2 bg-primary rounded-t-md">
         <div>
           <div className="text-sm text-light">
-            {dayjs.unix(data?.dt).format("MMM DD, h:mm A")}
+            {dayjs().format("MMM DD, h:mm A")}
           </div>
         </div>
         <div className="font-bold text-lg text-light">{`${data?.name}, ${data?.sys.country}`}</div>

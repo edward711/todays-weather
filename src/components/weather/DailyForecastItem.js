@@ -30,6 +30,8 @@ function DailyForecastItem({ data }) {
             src={getWeatherIconUrl(data?.weather[0].icon)}
           />
         </div>
+        <div>Max: {`${Math.round(data?.temp.max)}°C`}</div>
+        <div>Min: {`${Math.round(data?.temp.min)}°C`}</div>
       </section>
     </div>
   );

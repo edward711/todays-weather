@@ -8,10 +8,10 @@ const BUTTON_TYPES_MAPS = {
 };
 
 function Button(props) {
-  const { className, type, children, onClickFunc } = props;
+  const { className, type, children, onClick } = props;
 
   return (
-    <button className={classNames("rounded-md border active:translate-y-px border-secondary shadow-sm px-2", BUTTON_TYPES_MAPS[type], className)} onClick={onClickFunc}>{children}</button>
+    <button className={classNames("rounded-md border active:translate-y-px border-secondary shadow-sm px-2", BUTTON_TYPES_MAPS[type], className)} onClick={onClick}>{children}</button>
   )
 }
 

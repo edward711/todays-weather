@@ -1,6 +1,11 @@
 import DailyForecastItem from "./DailyForecastItem";
+import EmptyData from './EmptyData';
 
 function DailyForecast({ data }) {
+  if(!data) {
+    return <EmptyData />
+  }
+
   return (
     <div>
       <header className="p-5">
