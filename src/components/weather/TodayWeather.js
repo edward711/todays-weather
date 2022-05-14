@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import dayjs from "dayjs";
 import { getWeatherIconUrl } from "../../utils/helper";
-import EmptyData from './EmptyData';
+import NoRecord from './NoRecord';
+import { ApiContext } from "../../App";
 
-function TodayWeather({ data }) {
+function TodayWeather() {
+  const { getCurrentWeatherApi: { data } } = useContext(ApiContext);
 
   if(!data) {
-    return <EmptyData />
+    return <NoRecord />
   }
 
   return (

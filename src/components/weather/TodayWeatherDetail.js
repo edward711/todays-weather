@@ -1,19 +1,20 @@
+import { useContext } from "react";
 import TodayWeatherDetailItem from "./TodayWeatherDetailItem";
 import { meterToKiloMeter } from "../../utils/helper";
-import EmptyData from './EmptyData';
+import NoRecord from './NoRecord';
+import Header from './Header';
+import { ApiContext } from "../../App";
 
-function TodayWeatherDetail({ data }) {
+function TodayWeatherDetail() {
+  const { getCurrentWeatherApi: { data } } = useContext(ApiContext);
+
   if(!data) {
-    return <EmptyData />
+    return <NoRecord />
   }
 
   return (
     <div>
-      <header className="p-5">
-        <div className="font-semibold text-lg">
-          {`Weather Today in ${data?.name}, ${data?.sys.country}`}
-        </div>
-      </header>
+      <Header text={`Weather Today in ${data?.name}, ${data?.sys.country}`} />
 
       <main>
         <section className="pb-5 px-5">

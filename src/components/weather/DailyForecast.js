@@ -1,20 +1,25 @@
+import { useContext } from "react";
 import DailyForecastItem from "./DailyForecastItem";
-import EmptyData from './EmptyData';
+import NoRecord from "./NoRecord";
+import Header from "./Header";
+import { ApiContext } from "../../App";
 
-function DailyForecast({ data }) {
-  if(!data) {
-    return <EmptyData />
+function DailyForecast() {
+  const { getOneCallWeatherApi: { data } } = useContext(ApiContext);
+
+  if (!data) {
+    return <NoRecord />;
   }
 
   return (
     <div>
-      <header className="p-5">
-        <div className="font-semibold text-lg">Daily Forecast</div>
-      </header>
+      <Header text="Daily Forecast" />
 
       <main>
-        <section className="pb-5 px-5 overflow-auto whitespace-nowrap">
-         {data?.daily.map((dailyData) => <DailyForecastItem key={dailyData.dt} data={dailyData} />)}
+        <section className="pb-5 px-5 overflow-auto whitespace-nowrap space-x-3">
+          {data?.daily.map((dailyData) => (
+            <DailyForecastItem key={dailyData.dt} data={dailyData} />
+          ))}
         </section>
       </main>
     </div>

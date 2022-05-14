@@ -11,7 +11,7 @@ function DailyForecastItem({ data }) {
   };
 
   return (
-    <div className="inline-block text-center px-4 first:pl-0 last:pr-0">
+    <div className="inline-block text-center first:pl-0 last:pr-0">
       <header className={classNames({ "font-bold": isToday() })}>
         {isToday() ? "Today" : dayjs.unix(data.dt).format("MMM DD")}
       </header>
